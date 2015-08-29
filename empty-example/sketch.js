@@ -9,7 +9,7 @@ function setup() {
   createCanvas(1200, 800);
 
   musicNoteImage = loadImage("assets/note.jpg");
-  cowImage = loadImage("assets/cow.png");
+  cowImage = loadImage("assets/cow2.png");
   catImage = loadImage("assets/cat.jpg");
 
   cow = createSprite(130, 130, 20, 20);
@@ -75,20 +75,21 @@ function draw() {
 		notes.add(newNote);
 	}
 
-	if(cow.overlap(cats, collect)){
-    	cow.scale -= .08;
-  	}
-  
-  if(cow.overlap(notes, collect)){
-  		cow.scale += .04;
-  	}
-
-//	cow.collide(obstacles);
+	//	cow.collide(obstacles);
   background(0, 0, 0); 
   camera.off();
   camera.on();
   camera.position.x = cow.position.x + width/16;
   drawSprites();
+
+	if(cow.overlap(cats, collect)){
+    	cow.scale -= .08;
+  	}
+  
+  	if(cow.overlap(notes, collect)){
+  		cow.scale += .04;
+  	}
+
 
 }
 
