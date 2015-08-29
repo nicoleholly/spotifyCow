@@ -42,11 +42,9 @@ function draw() {
   	}
   	cow.velocity.y += GRAVITY;
 
- 	 camera.position.x = cow.position.x + width/16;
-
-
- 	cow.collide(obstacles);
  	camera.position.x = cow.position.x + width/16;
+ 	camera.position.x = cow.position.x + width/16;
+
  	if (frameCount%90 == 0){
   	for(i=0;i<3;i++){
   		var box = createSprite(cow.position.x + width, random(0 + (height*.15), height), random(0,40), random(0,40));
@@ -71,7 +69,7 @@ function draw() {
 	}
 
 	if(cow.overlap(cats, collect)){
-    	cow.scale -= .008;
+    	cow.scale -= .08;
   	}
   
   	if(cow.overlap(notes, collect)){
@@ -79,7 +77,6 @@ function draw() {
   	}
 
 //  cow.collide(obstacles);
-  	camera.off();
   	camera.on();
   	camera.position.x = cow.position.x + width/16;
   	drawSprites();
