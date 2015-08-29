@@ -1,11 +1,11 @@
 var cowImage, musicNoteImage, catImage, backgroundImage;
 var direction = 90; 
 var cow, musicNote, cat, background;
-var GRAVITY = .002;
+var GRAVITY = .004;
 
 
 function setup() {
-  createCanvas(800,800);
+  createCanvas(1000, 1000);
   musicNoteImage = loadImage("assets/note.jpg");
   cowImage = loadImage("assets/cow.png");
   catImage = loadImage("assets/cat.jpg");
@@ -14,7 +14,11 @@ function setup() {
   note = createSprite(300, 300, 20);
   cat = createSprite(450, 450, 20, 20);
 
-  cow.velocity.x = .8;
+  cat.scale = .25;
+  note.scale = .25;
+  cow.scale = .25;
+
+  cow.velocity.x = 1.2;
   cow.addImage("normal", cowImage);
   cow.rotateToDirection = true;
 
@@ -32,11 +36,10 @@ function draw() {
 		cow.velocity.y = .3;
 	}
 
-	camera.position.x = cow.position.x + width/4;
+	camera.position.x = cow.position.x + width/16;
 
  	background(247, 134, 131); 
 	camera.off();
-//	image(backgroundImage, 0, 450-190);
 	camera.on();
 
 	drawSprite(cow);
