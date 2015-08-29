@@ -1,6 +1,5 @@
-var cowImage, musicNote;
-var direction = 90; 
-var cow;
+var cowImage, musicNoteImage, backgroundImage;
+var cow, musicNote, background;
 
 function setup() {
   createCanvas(800,800);
@@ -13,8 +12,9 @@ function setup() {
 }
 
 function draw() {
-	background(255,255,255);  
+
+background(255,255,255);  
   
   
-  drawSprites()
+  drawSprite(cow);
 }
