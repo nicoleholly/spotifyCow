@@ -7,7 +7,9 @@ var boxes = true;
 
 
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(1200, 800);
+
+ // earthImage = loadImage("assets/earth.gif");
   musicNoteImage = loadImage("assets/note.jpg");
   cowImage = loadImage("assets/cow.png");
   catImage = loadImage("assets/cat.jpg");
@@ -45,6 +47,7 @@ function draw() {
   if(keyWentDown("d")){
     cow.velocity.y = .3;
   }
+	cow.velocity.y += GRAVITY;
 
   camera.position.x = cow.position.x + width/16;
 
@@ -52,9 +55,15 @@ function draw() {
   camera.off();
   camera.on();
   cow.collide(obstacles);
+	camera.position.x = cow.position.x + width/16;
+
+ 	background(0, 0, 0); 
+	camera.off();
+	camera.on();
+
+
 
  drawSprites();
 
 }
-
 
