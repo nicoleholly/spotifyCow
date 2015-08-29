@@ -1,28 +1,26 @@
 
-var cowImage, musicNoteImage, catImage, backgroundImage, earthImage;
-var cow, musicNote, background, earth;
+var cowImage, musicNoteImage, catImage, backgroundImage, earthImage, marsImage;
+var cow, musicNote, background, earth, mars;
 var GRAVITY = .004;
 var obstacles;
-var meow;
 
 
 function setup() {
-  meow = loadSound('assets/Meow-sound-effect.mp3');
   createCanvas(1200, 800);
   obstacles = new Group();
   cats = new Group();
   notes = new Group();
+  planets = new Group();
 
   musicNoteImage = loadImage("assets/spotify.png");
   cowImage = loadImage("assets/cow2.png");
   catImage = loadImage("assets/cat2.gif");
   earthImage = loadImage("assets/earth.gif");
+  marsImage = loadImage("assets/mars.jpg");
 
-  earth = createSprite(500, 500,700, 700);
+  earth = createSprite(500, 500, 700, 700);
   cow = createSprite(130, 130, 20, 20);
-  note = createSprite(300, 300, 20);
   earth.scale = .5;
-
   cow.scale = .25;
 
   cow.velocity.x = 1.2;
@@ -30,21 +28,19 @@ function setup() {
   cow.addImage("normal", cowImage);
 
   camera.position.y = height/2;
-  
+  planets.add(earth);
   earth.addImage("normal", earthImage);
 
 }
 
-
 function draw() {
-
+  console.log(frameCount);
 	background(0, 0, 0); 
   	cow.velocity.y += GRAVITY;
 
 
   	if(keyWentDown("s")){
     	cow.velocity.y = -.3;
-
   	}
   	if(keyWentDown("d")){
     	cow.velocity.y = .3;
@@ -79,9 +75,15 @@ function draw() {
 		notes.add(newNote);
 	}
 
+  if(frameCount ==750){
+    var newPlanet = createSprite(cow.position.x + width, 500, 700, 700);
+    newPlanet.addImage("normal", marsImage);
+    newPlanet.scale = 1.3;
+    newPlanet.velocity.x = -.3;
+    planets.add(newPlanet);
+  }
+
 	if(cow.overlap(cats, collect)){
-    	cow.scale -= .008;
-      meow.play();
     	cow.scale -= .08;
   	}
   
@@ -91,12 +93,15 @@ function draw() {
 
   	camera.on();
   	camera.position.x = cow.position.x + width/16;
-  	drawSprites();
+    drawSprites(planets);
+    drawSprites(obstacles);
+    drawSprite(cow);
+    drawSprites(notes);
+    drawSprites(cats);
   }
 
 
 function collect(collector, collected){
   collected.remove();
-
 }
 
