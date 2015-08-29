@@ -76,7 +76,7 @@ function draw() {
 	}
 
 	if(cow.overlap(cats, collect)){
-    	cow.scale -= .08;
+    	cow.scale -= .008;
   	}
   
   if(cow.overlap(notes, collect)){
