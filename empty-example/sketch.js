@@ -19,8 +19,10 @@ function setup() {
   cow.scale = .25;
 
   cow.velocity.x = 1.2;
-  cow.addImage("normal", cowImage);
   cow.rotateToDirection = true;
+  cow.addImage("normal", cowImage);
+  cat.addImage("normal", catImage);
+  note.addImage("normal", musicNoteImage);
 
   camera.position.y = height/2;
 }
@@ -37,7 +39,7 @@ function draw() {
 
 	camera.position.x = cow.position.x + width/16;
 
- 	background(247, 134, 131); 
+ 	background(0, 0, 0); 
 	camera.off();
 	camera.on();
 
@@ -49,5 +51,4 @@ function draw() {
 }
 
 function mousePressed() {
-	note.addImage("normal", musicNoteImage);
 }
