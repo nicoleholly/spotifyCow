@@ -1,6 +1,6 @@
 
 var cowImage, musicNoteImage, catImage, backgroundImage;
-var cow, musicNote, cat, background;
+var cow, musicNote, background;
 var GRAVITY = .004;
 var obstacles;
 var boxes = true;
@@ -9,33 +9,26 @@ var boxes = true;
 function setup() {
   createCanvas(1200, 800);
 
- // earthImage = loadImage("assets/earth.gif");
   musicNoteImage = loadImage("assets/note.jpg");
   cowImage = loadImage("assets/cow.png");
   catImage = loadImage("assets/cat.jpg");
 
   cow = createSprite(130, 130, 20, 20);
   note = createSprite(300, 300, 20);
-  cat = createSprite(450, 450, 20, 20);
 
-  cat.scale = .25;
   note.scale = .25;
   cow.scale = .25;
 
   cow.velocity.x = 1.2;
   cow.rotateToDirection = true;
   cow.addImage("normal", cowImage);
-  cat.addImage("normal", catImage);
   note.addImage("normal", musicNoteImage);
 
   camera.position.y = height/2;
+  
   obstacles = new Group();
-  if (frameCount%20 == 0){
-    for(i=0;i<10;i++){
-    var box = createSprite(random(0,width), random(0,height));
-    obstacles.add(box);
-  }
-  }
+  cats = new Group();
+  
 }
 
 function draw() {
@@ -54,16 +47,31 @@ function draw() {
   background(0, 0, 0); 
   camera.off();
   camera.on();
-  cow.collide(obstacles);
-	camera.position.x = cow.position.x + width/16;
+  camera.position.x = cow.position.x + width/16;
+  drawSprites();
 
- 	background(0, 0, 0); 
-	camera.off();
-	camera.on();
+  if (frameCount%120 == 0){
+    for(i=0;i<3;i++){
+    var box = createSprite(cow.position.x + width, random(0 + (height*.15), height), random(0,40), random(0,40));
+    obstacles.add(box);
+  	}
+  }
+  if(frameCount%200 == 0){
+	var newCat = createSprite(cow.position.x + width, random(0+(height*.15), height), 20, 20);
+	newCat.addImage("normal", catImage);
+	newCat.scale = .25;
+	newCat.velocity.x = -1.5;
+	cats.add(newCat);
+	}
 
+	if(cow.overlap(cats, collect)){
+      cow.scale += .08;
+  }
 
-
- drawSprites();
+	cow.collide(obstacles);
 
 }
 
+function collect(collector, collected){
+	collected.remove();
+}

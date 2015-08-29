@@ -4,6 +4,12 @@
    bottom:0px;
    height:22%;
    width:69%;
+   z-index: -1;
+}
+
+#defaultCanvas{
+	position: absolute;
+	z-index: -2;
 }
 
 html #footer {
