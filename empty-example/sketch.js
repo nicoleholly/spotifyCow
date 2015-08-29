@@ -48,12 +48,6 @@ function draw() {
   background(0, 0, 0); 
   obstacles = new Group();
 
-  if (frameCount%100 == 0){
-    for(i=0;i<4;i++){
-    var box = createSprite(random(0,width), random(0,height));
-    obstacles.add(box);
-    }
-  }
 
   cow.collide(obstacles);
   camera.position.x = cow.position.x + width/16;
