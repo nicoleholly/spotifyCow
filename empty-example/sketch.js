@@ -1,5 +1,5 @@
+
 var cowImage, musicNoteImage, catImage, backgroundImage;
-var direction = 90; 
 var cow, musicNote, cat, background;
 var GRAVITY = .004;
 
@@ -26,7 +26,6 @@ function setup() {
 }
 
 function draw() {
-
 	cow.velocity.y += GRAVITY;
 
 	if(keyWentDown("s")){
@@ -45,9 +44,10 @@ function draw() {
 	drawSprite(cow);
 	drawSprite(note);
 	drawSprite(cat);
+
+
 }
 
 function mousePressed() {
 	note.addImage("normal", musicNoteImage);
-	cat.addImage("normal", catImage);
 }
