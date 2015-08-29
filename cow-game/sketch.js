@@ -3,9 +3,11 @@ var cowImage, musicNoteImage, catImage, backgroundImage;
 var cow, musicNote, background;
 var GRAVITY = .004;
 var obstacles;
+var meow;
 
 
 function setup() {
+  meow = loadSound('assets/Meow-sound-effect.mp3');
   createCanvas(1200, 800);
   obstacles = new Group();
   cats = new Group();
@@ -28,13 +30,16 @@ function setup() {
   
 }
 
+
 function draw() {
+
 	background(0, 0, 0); 
   	cow.velocity.y += GRAVITY;
 
 
   	if(keyWentDown("s")){
     	cow.velocity.y = -.3;
+
   	}
   	if(keyWentDown("d")){
     	cow.velocity.y = .3;
@@ -71,6 +76,7 @@ function draw() {
 
 	if(cow.overlap(cats, collect)){
     	cow.scale -= .008;
+      meow.play();
   	}
   
   if(cow.overlap(notes, collect)){
@@ -85,5 +91,6 @@ function draw() {
 
 function collect(collector, collected){
   collected.remove();
+
 }
 
