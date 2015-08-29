@@ -8,9 +8,9 @@ var obstacles;
 function setup() {
   createCanvas(1200, 800);
 
-  musicNoteImage = loadImage("assets/note.jpg");
+  musicNoteImage = loadImage("assets/note.png");
   cowImage = loadImage("assets/cow2.png");
-  catImage = loadImage("assets/cat.jpg");
+  catImage = loadImage("assets/cat2.gif");
 
   cow = createSprite(130, 130, 20, 20);
   note = createSprite(300, 300, 20);
@@ -75,13 +75,6 @@ function draw() {
 		notes.add(newNote);
 	}
 
-	//	cow.collide(obstacles);
-  background(0, 0, 0); 
-  camera.off();
-  camera.on();
-  camera.position.x = cow.position.x + width/16;
-  drawSprites();
-
 	if(cow.overlap(cats, collect)){
     	cow.scale -= .08;
   	}
@@ -90,6 +83,12 @@ function draw() {
   		cow.scale += .04;
   	}
 
+//  cow.collide(obstacles);
+  background(0, 0, 0); 
+  camera.off();
+  camera.on();
+  camera.position.x = cow.position.x + width/16;
+  drawSprites();
 
 }
 
