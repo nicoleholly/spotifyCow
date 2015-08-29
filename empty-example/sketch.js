@@ -1,16 +1,19 @@
 
 var cowImage, catImage, musicNoteImage, backgroundImage;
 var cow, musicNote, background;
-
+/**
+function preload(){
+	cowImage = loadImage('assets/cow.png');
+}
+***/
 function setup() {
   createCanvas(800,800);
   background('#fae');
-  //cowImage = loadImage("assets/cow.png");
   //musicNoteImage = loadImage("assets/note.jpg");
   //catImage = loadImage("assets/cat.jpg")
 
   cow = createSprite(10,10,50,50);
-  //cow.addImage("normal", cowImage);
+  //ow.addImage("normal", cowImage);
 
 
 }
@@ -18,6 +21,7 @@ function setup() {
 function draw() {
 
   drawSprite(cow);
+  //cow.changeAnimation("normal");
 
 }
 
