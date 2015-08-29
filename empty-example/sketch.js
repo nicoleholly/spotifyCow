@@ -3,7 +3,6 @@ var cowImage, musicNoteImage, catImage, backgroundImage;
 var cow, musicNote, background;
 var GRAVITY = .004;
 var obstacles;
-var boxes = true;
 
 
 function setup() {
@@ -25,6 +24,7 @@ function setup() {
   note.addImage("normal", musicNoteImage);
 
   camera.position.y = height/2;
+
   
   obstacles = new Group();
   cats = new Group();
@@ -33,6 +33,7 @@ function setup() {
 }
 
 function draw() {
+
   cow.velocity.y += GRAVITY;
 
   if(keyWentDown("s")){
@@ -41,7 +42,7 @@ function draw() {
   if(keyWentDown("d")){
     cow.velocity.y = .3;
   }
-	cow.velocity.y += GRAVITY;
+  cow.velocity.y += GRAVITY;
 
   camera.position.x = cow.position.x + width/16;
 
@@ -86,5 +87,5 @@ function draw() {
 }
 
 function collect(collector, collected){
-	collected.remove();
+  collected.remove();
 }
