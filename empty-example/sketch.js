@@ -15,7 +15,7 @@ function setup() {
   cow = createSprite(130, 130, 20, 20);
   note = createSprite(300, 300, 20);
 
-  note.scale = .25;
+  note.scale = .10;
   cow.scale = .25;
 
   cow.velocity.x = 1.2;
@@ -80,7 +80,7 @@ function draw() {
   	}
   
   if(cow.overlap(notes, collect)){
-  		cow.scale += .04;
+  		cow.scale += .008;
   	}
 
   cow.collide(obstacles);
