@@ -1,6 +1,6 @@
-var cowImage, musicNote;
+var cowImage, musicNoteImage, catImage;
 var direction = 90; 
-var cow;
+var cow, musicNote, cat, background;
 
 function setup() {
   createCanvas(800,800);
