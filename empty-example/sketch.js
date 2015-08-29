@@ -25,5 +25,4 @@ function mousePressed() {
 	cow.addImage("normal", cowImage);
 	note.addImage("normal", musicNoteImage);
 	cat.addImage("normal", catImage);
-
 }
