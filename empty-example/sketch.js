@@ -1,7 +1,7 @@
 var cowImage, musicNoteImage, catImage, backgroundImage;
 var direction = 90; 
 var cow, musicNote, cat, background;
-var GRAVITY = .003;
+var GRAVITY = .002;
 
 
 function setup() {
@@ -14,17 +14,15 @@ function setup() {
   note = createSprite(300, 300, 20);
   cat = createSprite(450, 450, 20, 20);
 
-  cow.velocity.x = 1;
+  cow.velocity.x = .8;
+  cow.addImage("normal", cowImage);
+  cow.rotateToDirection = true;
 
+  camera.position.y = height/2;
 }
 
 function draw() {
-	drawSprite(cow);
-	drawSprite(note);
-	drawSprite(cat);
 
-	cow.addImage("normal", cowImage);
-	cow.rotateToDirection = true;
 	cow.velocity.y += GRAVITY;
 
 	if(keyWentDown("s")){
@@ -34,8 +32,18 @@ function draw() {
 		cow.velocity.y = .3;
 	}
 
+	camera.position.x = cow.position.x + width/4;
 
+ 	background(247, 134, 131); 
+	camera.off();
+//	image(backgroundImage, 0, 450-190);
+	camera.on();
+
+	drawSprite(cow);
+	drawSprite(note);
+	drawSprite(cat);
 }
+
 function mousePressed() {
 	note.addImage("normal", musicNoteImage);
 	cat.addImage("normal", catImage);
