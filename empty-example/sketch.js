@@ -1,11 +1,14 @@
 
 var cowImage, musicNoteImage, catImage, backgroundImage;
-var cow, musicNote, cat, background;
+var cow, musicNote, cat, background, earth;
 var GRAVITY = .004;
 
 
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(1200, 800);
+  document.getElementById('earth').style.backgroundImage ='url("assets/earth.gif")';
+
+ // earthImage = loadImage("assets/earth.gif");
   musicNoteImage = loadImage("assets/note.jpg");
   cowImage = loadImage("assets/cow.png");
   catImage = loadImage("assets/cat.jpg");
